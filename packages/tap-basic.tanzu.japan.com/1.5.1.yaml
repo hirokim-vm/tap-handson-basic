@@ -1,0 +1,56 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: tap-basic.tanzu.japan.com.1.5.2
+spec:
+  refName: tap-basic.tanzu.japan.com
+  version: 1.5.2
+  valuesSchema:
+    openAPIv3:
+      title: tap-basic.tanzu-jp values schema
+      properties:
+        sessions:
+          type: integer
+          description: session count
+          default: 5
+        domain:
+          type: string
+          description: domain
+          default: seminar.tanzu.japan.com
+        hostname:
+          type: string
+          description: hostname
+          default: tap-basic
+        tanzunet:
+          type: string
+          description: tanzunet token
+          default: ""
+        tapversion:
+          type: string
+          description: tap version
+          default: 1.5.2
+        tls:
+          type: object
+          additionalProperties: false
+          description: TLS config
+          properties:
+            enabled:
+              type: boolean
+              default: false
+            crt:
+              type: string
+              default: dummy
+            key:
+              type: string
+              default: dummy
+  template:
+    spec:
+      fetch:
+      - git:
+          url: https://github.com/hirokim-vm/tap-handson-basic
+          ref: origin/main
+          subPath: k8s
+      template:
+      - ytt: {}
+      deploy:
+      - kapp: {}
