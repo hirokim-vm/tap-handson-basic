@@ -3,14 +3,14 @@
 apiVersion: learningcenter.tanzu.vmware.com/v1beta1
 kind: Workshop
 metadata:
-  name: tap-openshift
+  name: tap-basic
 spec:
   title: TAP for Plat/App Operators
   description: TAP for Plat/App Operators
   url: https://github.com/hirokim-vm/tap-handson-basic
   content:
     image: ghcr.io/hirokim-vm/tap-handson-basic-lc:latest
-    files: github.com/mhoshi-vm/tap-handson-basic?ref=main
+    files: github.com/hirokim-vm/tap-handson-basic?ref=main
   session:
     env:
     - name: TANZUNET_TOKEN
