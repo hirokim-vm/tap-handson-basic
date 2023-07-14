@@ -66,7 +66,8 @@ RUN wget -q https://github.com/vmware-tanzu/apps-cli-plugin/releases/download/v$
     rm -fr tanzu-apps-plugin*
 
 # Maven
-ENV MAVEN_VERSION=3.9.2
+# check if the version exists in http://ftp.riken.jp/net/apache/maven/maven-3/
+ENV MAVEN_VERSION=3.9.3
 RUN wget -q -O maven.tar.gz http://ftp.riken.jp/net/apache/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz && \
     tar xzf maven.tar.gz && \
     sudo mv apache-maven-* /opt/ && \
